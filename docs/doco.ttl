@@ -1,0 +1,579 @@
+# baseURI: http://purl.org/spar/doco_spare
+# imports: http://datashapes.org/dash
+# imports: http://purl.org/spar/deo
+# imports: http://purl.org/spar/po
+# prefix: doco
+
+@prefix : <http://purl.org/spar/doco/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix deo: <http://purl.org/spar/deo/> .
+@prefix doco: <http://purl.org/spar/doco#> .
+@prefix orb: <http://purl.org/orb/1.0/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pattern: <http://www.essepuntato.it/2008/12/pattern#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix sro: <http://salt.semanticauthoring.org/ontologies/sro#> .
+@prefix terms: <http://purl.org/dc/terms/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dc:creator
+  a owl:AnnotationProperty ;
+.
+dc:date
+  a owl:AnnotationProperty ;
+.
+dc:description
+  a owl:AnnotationProperty ;
+.
+dc:rights
+  a owl:AnnotationProperty ;
+.
+dc:title
+  a owl:AnnotationProperty ;
+.
+terms:hasPart
+  a owl:ObjectProperty ;
+.
+terms:isPartOf
+  a owl:ObjectProperty ;
+.
+terms:relation
+  a owl:ObjectProperty ;
+.
+orb:Header
+  a rdfs:Class ;
+.
+deo:BibliographicReference
+  a rdfs:Class ;
+.
+deo:Caption
+  a rdfs:Class ;
+.
+deo:DiscourseElement
+  a rdfs:Class ;
+.
+deo:Reference
+  a rdfs:Class ;
+.
+<http://purl.org/spar/doco>
+  a owl:Ontology ;
+  dc:creator "David Shotton" ;
+  dc:creator "Silvio Peroni" ;
+  dc:date "2015-07-03" ;
+  dc:description <http://purl.org/spar/doco/doco%20architecture.png> ;
+  dc:description "DoCO, the Document Components Ontology, provides a structured vocabulary written in OWL 2 DL of document components, both structural (e.g. block, inline, paragraph, section, chapter) and rhetorical (e.g. introduction, discussion, acknowledgements, reference list, figure, appendix), enabling these components, and documents composed of them, to be described in RDF. It imports the Discourse Elements Ontology (http://purl.org/spar/deo) and the Document Structural Patterns Ontology (http://purl.org/spar/po), and uses seven rhetorical block elements abstracted from the SALT Rhetorical Ontology and the Ontology of Rhetorical Blocks (ORB)."@en ;
+  dc:rights "This work is distributed under a Creative Commons Attribution License (http://creativecommons.org/licenses/by/3.0/)."@en ;
+  dc:title "DoCO, the Document Components Ontology"@en ;
+  rdfs:comment """The Document Components Ontology (DoCO) in an ontology that provides a structured vocabulary written of document components, both structural (e.g., block, inline, paragraph, section, chapter) and rhetorical (e.g., introduction, discussion, acknowledgements, reference list, figure, appendix).
+
+**URL:** http://purl.org/spar/doco
+
+**Creators**: [David Shotton](http://orcid.org/0000-0001-5506-523X), [Silvio Peroni](http://orcid.org/0000-0003-0530-4305)
+
+**License:** [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/legalcode)
+
+**Website:** http://www.sparontologies.net/ontologies/doco
+
+**Cite as:** Constantin, A., Peroni, S., Pettifer, S., Shotton, D., Vitali, F. (2016). The Document Components Ontology (DoCO). In Semantic Web, 7 (2): 167-181. DOI: http://dx.doi.org/10.3233/SW-150177"""@en ;
+  rdfs:comment "This ontology is available at http://purl.org/spar/doco, and uses the namespace prefix doco."@en ;
+  owl:imports <http://datashapes.org/dash> ;
+  owl:imports <http://purl.org/spar/deo> ;
+  owl:imports <http://purl.org/spar/po> ;
+  owl:priorVersion <https://svn.code.sf.net/p/sempublishing/code/DoCO/2014-05-14_doco-1_2.owl> ;
+  owl:versionIRI <http://purl.org/spar/doco/2015-07-03> ;
+  owl:versionInfo "1.3" ;
+.
+:Abstract
+  a rdfs:Class ;
+  rdfs:comment "A brief summary of a book, a research article, thesis, review, conference proceeding or any in-depth analysis of a particular subject or discipline, the purpose of which is to help the reader quickly ascertain the publication's purpose." ;
+  rdfs:label "abstract" ;
+.
+:Afterword
+  a rdfs:Class ;
+  rdfs:comment "A literary device that is often found at the end of a piece of literature. It generally covers the story of how the book came into being, or how the idea for the book was developed. Alternatively, it may be written by someone other than the author of the book, and may discuss the work's historical or cultural context, if the work is being reissued many years after its original publication."@en ;
+  rdfs:label "afterword"@en ;
+.
+:Appendix
+  a rdfs:Class ;
+  rdfs:comment "A supplemental addition to the main work. It may contain data, more detailed information about methods and materials, or provide additional detail concerning the information found in the main work."@en ;
+  rdfs:label "appendix"@en ;
+.
+:BackMatter
+  a rdfs:Class ;
+  rdfs:comment "The final principle part of a document, in which is usually found the bibliography, index, appendixes, etc."@en ;
+  rdfs:label "back matter"@en ;
+.
+:BibliographicReferenceList
+  a rdfs:Class ;
+  rdfs:comment "A list, usually within a bibliography, of all the references within the citing document that refer to  journal articles, books, book chapters, Web sites or similar publications."@en ;
+  rdfs:label "bibliographic reference list"@en ;
+.
+:Bibliography
+  a rdfs:Class ;
+  rdfs:comment "A document section containing a list of bibliographic references."@en ;
+  rdfs:label "bibliography"@en ;
+.
+:BlockQuotation
+  a rdfs:Class ;
+  rdfs:comment "A block quotation (also known as a long quotation or extract) is a quotation in a written document which is set off from the main text as a container for distinct paragraphs, which is typically distinguished visually using indentation, a different font, or smaller size. Block quotations are used for longer passages than run-in quotations (which are set off with quotation marks)."@en ;
+  rdfs:label "block quotation"@en ;
+  rdfs:subClassOf pattern:Container ;
+.
+:BodyMatter
+  a rdfs:Class ;
+  rdfs:comment "The central principle part of a document, that contains the real content. It may be subdivided hierarchically by the use of chapters and sections."@en ;
+  rdfs:label "body matter"@en ;
+.
+:CaptionedBox
+  a rdfs:Class ;
+  rdfs:comment "A rectangle space within a page that contains an object and its related caption."@en ;
+  rdfs:label "captioned box"@en ;
+.
+:Chapter
+  a rdfs:Class ;
+  rdfs:comment "A principle division of the body matter of a large document, such as a book, a report or a legislative document."@en ;
+  rdfs:label "chapter"@en ;
+.
+:ChapterLabel
+  a rdfs:Class ;
+  rdfs:comment "A block containing a label for the chapter, that may include the chapter number."@en ;
+  rdfs:label "chapter label"@en ;
+.
+:ChapterSubtitle
+  a rdfs:Class ;
+  rdfs:comment "The subtitle of a chapter."@en ;
+  rdfs:label "chapter subtitle"@en ;
+  rdfs:subClassOf :Subtitle ;
+.
+:ChapterTitle
+  a rdfs:Class ;
+  rdfs:comment "The title of a chapter."@en ;
+  rdfs:label "chapter title"@en ;
+  rdfs:subClassOf :Title ;
+.
+:Colophon
+  a rdfs:Class ;
+  rdfs:comment "A brief description of publication or production notes relevant to the document."@en ;
+  rdfs:label "colophon"@en ;
+.
+:ComplexRunInQuotation
+  a owl:Class ;
+  rdfs:comment "A quotation with a complex structure, that is included inline and is usually enclosed within quotation marks."@en ;
+  rdfs:label "complex run-in quotation"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+  rdfs:subClassOf pattern:Popup ;
+.
+:Figure
+  a rdfs:Class ;
+  rdfs:comment "A communication object comprising one or more graphics, drawings, images, or other visual representations.."@en ;
+  rdfs:label "figure"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+.
+:FigureBox
+  a rdfs:Class ;
+  rdfs:comment "A space within a document that contains a figure and its caption."@en ;
+  rdfs:label "figure box"@en ;
+.
+:FigureLabel
+  a rdfs:Class ;
+  rdfs:comment "A block containing a label for the figure box, that may include the figure number."@en ;
+  rdfs:label "figure label"@en ;
+.
+:Footnote
+  a rdfs:Class ;
+  rdfs:comment "A structure within a sentence that permits the author to make a comment or to cite another publication in support of the text, or both. A footnote is normally flagged by a superscript number immediately following that portion of the text to which it relates. For convenience of reading, the text of the footnote is usually printed at the bottom of the page or at the end of a text."@en ;
+  rdfs:label "footnote"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+.
+:Foreword
+  a rdfs:Class ;
+  rdfs:comment "A section in a book or report, usually written by someone other than the author, that introduces or commends the document to the reader. It may include description of the interaction between the writer of the foreword and the author."@en ;
+  rdfs:label "foreword"@en ;
+.
+:Formula
+  a owl:Class ;
+  rdfs:comment "A unit of information expressed in mathematical, chemical or logical symbols and language."@en ;
+  rdfs:label "formula"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+  rdfs:subClassOf pattern:Popup ;
+.
+:FormulaBox
+  a rdfs:Class ;
+  rdfs:comment "A space within a document that contains one or more formulae."@en ;
+  rdfs:label "formula box"@en ;
+.
+:FrontMatter
+  a rdfs:Class ;
+  rdfs:comment "The initial principle part of a document, usually containing self-referential metadata. In a book, this typically includes its title, authors, publisher, publication date, ISBN and copyright declaration, together with the preface, foreword, table of content, etc. In a journal article, the front matter is normally restricted to the title, authors and the authors' affiliation details, although the latter may alternatively be included in a footnote or the back matter. In books, the front matter pages may be numbered in lowercase Roman numerals."@en ;
+  rdfs:label "front matter"@en ;
+.
+:Glossary
+  a rdfs:Class ;
+  rdfs:comment "A set of definitions of words or phrases of importance to the work, normally alphabetized. In longer works of fiction, the entries may contains places and characters."@en ;
+  rdfs:label "glossary"@en ;
+.
+:Index
+  a rdfs:Class ;
+  rdfs:comment "A section containing a list of references to information on the named topic of importance to the content of the document. The references may be to page numbers, paragraph numbers, section numbers or chapter numbers within the document."@en ;
+  rdfs:label "index"@en ;
+.
+:Label
+  a rdfs:Class ;
+  rdfs:comment "A block containing text, that may include a number (e.g., \"Chapter Three\", \"3.2\", \"Figure 1\", \"Table\"), used to identify an item within the document, for example a chapter, a figure, a section or a table."@en ;
+  rdfs:label "label"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+.
+:Line
+  a owl:Class ;
+  rdfs:comment """A line in poetry is a unit of language into which a poem is divided which operates on principles which are distinct from and not necessarily coincident with grammatical structures, such as the sentence or clauses in sentences.
+
+A distinct numbered group of lines in verse is normally called a stanza."""@en ;
+  rdfs:label "line"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+  rdfs:subClassOf pattern:Block ;
+.
+:List
+  a rdfs:Class ;
+  rdfs:comment "An enumeration of items."@en ;
+  rdfs:label "list"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+.
+:ListOfAgents
+  a rdfs:Class ;
+  rdfs:comment "A list of items each denoting an agent, such as an author, a contributor or an organization, related to a particular publication."@en ;
+  rdfs:label "list of agents"@en ;
+  rdfs:subClassOf :List ;
+.
+:ListOfAuthors
+  a rdfs:Class ;
+  rdfs:comment "A list of items each denoting an author of a particular publication."@en ;
+  rdfs:label "list of authors"@en ;
+  rdfs:subClassOf :ListOfAgents ;
+.
+:ListOfContributors
+  a rdfs:Class ;
+  rdfs:comment "A list of items, each denoting a contributor to a publication such as an encyclopedia or a text book, where such contributions are insufficient to warrant classification as author."@en ;
+  rdfs:label "list of contributors"@en ;
+  rdfs:subClassOf :ListOfAgents ;
+.
+:ListOfFigures
+  a rdfs:Class ;
+  rdfs:comment "A section of the document listing all the figures, identified by their titles and referenced to their locations in the document. May also be referred to as 'List of illustrations'."@en ;
+  rdfs:label "list of figures"@en ;
+.
+:ListOfOrganizations
+  a rdfs:Class ;
+  rdfs:comment "A list of items, each denoting an organization or institution related to the publication, for example the authors' affiliations, or the suppliers of information, software, equipment or consumables used in the work described in the publication."@en ;
+  rdfs:label "list of organizations"@en ;
+  rdfs:subClassOf :ListOfAgents ;
+.
+:ListOfReferences
+  a rdfs:Class ;
+  rdfs:comment "A list of items each representing a reference to a specific part of the same document, or to another publication."@en ;
+  rdfs:label "list of references"@en ;
+.
+:ListOfTables
+  a rdfs:Class ;
+  rdfs:comment "A section of the document listing all the tables, identified by their titles and referenced to their locations in the document."@en ;
+  rdfs:label "list of tables"@en ;
+.
+:Paragraph
+  a rdfs:Class ;
+  rdfs:comment "A self-contained unit of discourse that deals with a particular point or idea. Paragraphs contains one or more sentences. The start of a paragraph is indicated by beginning on a new line, which may be indented or separated by a small vertical space by the preceding paragraph. "@en ;
+  rdfs:label "paragraph"@en ;
+.
+:Part
+  a rdfs:Class ;
+  rdfs:comment "A container of a semantic subdivision of a document. For example, chapters of a novel may be grouped into distinct parts that may be named 'Part 1', 'Part 2', etc., 'Book 1', 'Book 2', etc., or 'Genesis', 'Exodus', etc."@en ;
+  rdfs:label "part"@en ;
+.
+:Preface
+  a rdfs:Class ;
+  rdfs:comment "A section describing how the document came into being, or how the idea for it was developed. The preface may contains acknowledgements. The preface to a later edition of the work often explains in what respect that edition differs from previous ones."@en ;
+  rdfs:label "preface"@en ;
+.
+:Section
+  a rdfs:Class ;
+  rdfs:comment "A logical division of the text, usually numbered and/or titled, which may contain subsections."@en ;
+  rdfs:label "section"@en ;
+.
+:SectionLabel
+  a rdfs:Class ;
+  rdfs:comment "A block containing a label for the section, that may include the section number."@en ;
+  rdfs:label "section label"@en ;
+  rdfs:subClassOf :Label ;
+.
+:SectionSubtitle
+  a rdfs:Class ;
+  rdfs:comment "The subtitle of a section."@en ;
+  rdfs:label "section subtitle"@en ;
+  rdfs:subClassOf :Subtitle ;
+.
+:SectionTitle
+  a rdfs:Class ;
+  rdfs:comment "The title of a section."@en ;
+  rdfs:label "section title"@en ;
+  rdfs:subClassOf :Title ;
+.
+:Sentence
+  a owl:Class ;
+  rdfs:comment "An expression in natural language forming a single grammatical unit. A sentence minimally consists of a subject and an intransitive verb, or a subject, a transitive verb and an object, and may include additional dependent clauses. In written text, a sentence is always terminated by a full stop. A sentence can include words grouped meaningfully to express a statement, a question, an exclamation, a request or a command."@en ;
+  rdfs:label "sentence"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+  rdfs:subClassOf pattern:Inline ;
+.
+:SimpleRunInQuotation
+  a rdfs:Class ;
+  rdfs:comment "A textual quotation that is included inline and is usually enclosed within quotation marks."@en ;
+  rdfs:label "simple run-in quotation"@en ;
+  rdfs:subClassOf pattern:Inline ;
+.
+:Stanza
+  a rdfs:Class ;
+  rdfs:comment "A unit within a larger poem. A stanza consists of a grouping of lines, set off by a vertical space from other stanzas, that usually has a set pattern of meter and rhyme."@en ;
+  rdfs:label "stanza"@en ;
+.
+:Subtitle
+  a owl:Class ;
+  rdfs:comment "An explanatory or alternative title of a publication. For example, Mary Shelley uses the alternative title 'The Modern Prometheus' to hint at the theme of her most famous novel 'Frankenstein'; Nick Efford uses the subtitle 'a practical introduction using Java' to qualify the title of his book 'Digital Image Processing'."@en ;
+  rdfs:label "subtitle"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+  rdfs:subClassOf pattern:Block ;
+.
+:Table
+  a owl:Class ;
+  rdfs:comment "A set of data arranged in cells within rows and columns."@en ;
+  rdfs:label "table"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+  rdfs:subClassOf pattern:Table ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty pattern:contains ;
+      owl:someValuesFrom pattern:Container ;
+    ] ;
+.
+:TableBox
+  a rdfs:Class ;
+  rdfs:comment "A space within a document that contains a table and its caption."@en ;
+  rdfs:label "table box"@en ;
+.
+:TableLabel
+  a rdfs:Class ;
+  rdfs:comment "A block containing a label for the table box, that may include the table number."@en ;
+  rdfs:label "table label"@en ;
+.
+:TableOfContents
+  a rdfs:Class ;
+  rdfs:comment "A section of the document listing all the chapters and sections, identified by their titles and referenced to their locations in the document. The table of contents may include a list of the front-matter and back-matter items, in addition to the body-matter items.  Where the document is a journal or magazine issue, the table of content lists the constituent items contained in that issue, typically by title, authors and first page number."@en ;
+  rdfs:label "table of contents"@en ;
+.
+:TextBox
+  a owl:Class ;
+  rdfs:comment "A space within a document that contains textual content relating to, quoting from or expanding upon the main text. Usually a textbox is delimited by a border or use of a background colour distinct from that of the main text."@en ;
+  rdfs:label "text box"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+  rdfs:subClassOf pattern:Container ;
+.
+:TextChunk
+  a rdfs:Class ;
+  rdfs:comment "A piece of text defined by a start point and an end point."@en ;
+  rdfs:label "text chunk"@en ;
+  rdfs:subClassOf pattern:Inline ;
+.
+:Title
+  a rdfs:Class ;
+  rdfs:comment "A word, phrase or sentence that precedes and indicates the subject of a document or a document component - e.g., a book, a report, a news article, a chapter, a section or a table."@en ;
+  rdfs:label "title"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+.
+sro:Abstract
+  a rdfs:Class ;
+.
+pattern:Block
+  a rdfs:Class ;
+.
+pattern:Container
+  a rdfs:Class ;
+.
+pattern:Field
+  a rdfs:Class ;
+.
+pattern:HeadedContainer
+  a rdfs:Class ;
+.
+pattern:Inline
+  a rdfs:Class ;
+.
+pattern:Meta
+  a rdfs:Class ;
+.
+pattern:Milestone
+  a rdfs:Class ;
+.
+pattern:Pattern
+  a rdfs:Class ;
+.
+pattern:Popup
+  a rdfs:Class ;
+.
+pattern:Table
+  a rdfs:Class ;
+.
+pattern:contains
+  a rdf:Property ;
+  rdfs:subPropertyOf terms:hasPart ;
+.
+pattern:isContainedBy
+  a rdf:Property ;
+  rdfs:subPropertyOf terms:isPartOf ;
+.
+pattern:isContainedByAsHeader
+  a rdf:Property ;
+.
+rdfs:comment
+  a owl:AnnotationProperty ;
+.
+rdfs:label
+  a owl:AnnotationProperty ;
+.
+owl:Class
+  sh:property [
+      a sh:PropertyShape ;
+      sh:path owl:allValuesFrom ;
+      sh:class owl:Class ;
+      sh:maxCount 1 ;
+      sh:nodeKind sh:BlankNodeOrIRI ;
+    ] ;
+  sh:property [
+      a sh:PropertyShape ;
+      sh:path owl:complementOf ;
+      sh:class owl:Class ;
+      sh:maxCount 1 ;
+      sh:nodeKind sh:BlankNodeOrIRI ;
+    ] ;
+  sh:property [
+      a sh:PropertyShape ;
+      sh:path owl:disjointWith ;
+      sh:class owl:Class ;
+      sh:nodeKind sh:IRI ;
+    ] ;
+  sh:property [
+      a sh:PropertyShape ;
+      sh:path owl:equivalentClass ;
+      sh:class owl:Class ;
+      sh:maxCount 1 ;
+      sh:nodeKind sh:IRI ;
+    ] ;
+  sh:property [
+      a sh:PropertyShape ;
+      sh:path owl:intersectionOf ;
+      sh:maxCount 1 ;
+      sh:nodeKind sh:BlankNode ;
+    ] ;
+  sh:property [
+      a sh:PropertyShape ;
+      sh:path owl:onProperty ;
+      sh:class rdf:Property ;
+      sh:maxCount 1 ;
+      sh:nodeKind sh:IRI ;
+    ] ;
+  sh:property [
+      a sh:PropertyShape ;
+      sh:path owl:someValuesFrom ;
+      sh:class owl:Class ;
+      sh:maxCount 1 ;
+      sh:nodeKind sh:BlankNodeOrIRI ;
+    ] ;
+  sh:property [
+      a sh:PropertyShape ;
+      sh:path owl:unionOf ;
+      sh:maxCount 1 ;
+      sh:nodeKind sh:BlankNode ;
+    ] ;
+  sh:property [
+      a sh:PropertyShape ;
+      sh:path <http://www.w3.org/2004/02/skos/core#definition> ;
+      sh:datatype rdf:langString ;
+      sh:maxCount 1 ;
+      sh:nodeKind sh:Literal ;
+    ] ;
+  sh:property [
+      a sh:PropertyShape ;
+      sh:path <http://www.w3.org/2004/02/skos/core#example> ;
+      sh:datatype rdf:langString ;
+      sh:maxCount 1 ;
+      sh:nodeKind sh:Literal ;
+    ] ;
+  sh:property [
+      a sh:PropertyShape ;
+      sh:path <http://www.w3.org/2004/02/skos/core#scopeNote> ;
+      sh:datatype rdf:langString ;
+      sh:maxCount 1 ;
+      sh:nodeKind sh:Literal ;
+    ] ;
+.
+owl:topObjectProperty
+  a rdf:Property ;
+.
+[
+  a owl:AllDisjointClasses ;
+  owl:members (
+      :Abstract
+      :Afterword
+      :Appendix
+      :Colophon
+      :Foreword
+      :Glossary
+      :Index
+      :ListOfFigures
+      :ListOfTables
+      :Preface
+      :TableOfContents
+    ) ;
+].
+[
+  a owl:AllDisjointClasses ;
+  owl:members (
+      :BackMatter
+      :BodyMatter
+      :CaptionedBox
+      :Chapter
+      :ComplexRunInQuotation
+      :Footnote
+      :Formula
+      :FormulaBox
+      :FrontMatter
+      :List
+      :Part
+      :Section
+      :Table
+    ) ;
+].
+[
+  a owl:AllDisjointClasses ;
+  owl:members (
+      :Label
+      :Paragraph
+      :Subtitle
+      :Title
+    ) ;
+].
+[
+  a owl:AllDisjointClasses ;
+  owl:members (
+      :ListOfAuthors
+      :ListOfContributors
+      :ListOfOrganizations
+    ) ;
+].
+[
+  a owl:AllDisjointClasses ;
+  owl:members (
+      :Sentence
+      :SimpleRunInQuotation
+      :TextChunk
+    ) ;
+].

@@ -1,0 +1,1158 @@
+# baseURI: http://purl.org/spar/doco_exportedTest/
+# imports: http://purl.org/spar/deo
+# imports: http://www.essepuntato.it/2008/12/pattern
+# prefix: doco
+
+@prefix : <http://purl.org/spar/doco/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix deo: <http://purl.org/spar/deo/> .
+@prefix doco: <http://purl.org/spar/doco/> .
+@prefix orb: <http://purl.org/orb/1.0/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pattern: <http://www.essepuntato.it/2008/12/pattern#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sro: <http://salt.semanticauthoring.org/ontologies/sro#> .
+@prefix terms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dc:creator
+  rdf:type owl:AnnotationProperty ;
+.
+dc:date
+  rdf:type owl:AnnotationProperty ;
+.
+dc:description
+  rdf:type owl:AnnotationProperty ;
+.
+dc:rights
+  rdf:type owl:AnnotationProperty ;
+.
+dc:title
+  rdf:type owl:AnnotationProperty ;
+.
+terms:hasPart
+  rdf:type owl:ObjectProperty ;
+.
+terms:isPartOf
+  rdf:type owl:ObjectProperty ;
+.
+terms:relation
+  rdf:type owl:ObjectProperty ;
+.
+orb:Header
+  rdf:type owl:Class ;
+  owl:equivalentClass doco:FrontMatter ;
+.
+deo:BibliographicReference
+  rdf:type owl:Class ;
+.
+deo:Caption
+  rdf:type owl:Class ;
+.
+deo:DiscourseElement
+  rdf:type owl:Class ;
+.
+deo:Reference
+  rdf:type owl:Class ;
+.
+<http://purl.org/spar/doco>
+  dc:creator "David Shotton" ;
+  dc:creator "Silvio Peroni" ;
+  dc:date "2015-07-03" ;
+  dc:description <http://purl.org/spar/doco/doco%20architecture.png> ;
+  dc:description "DoCO, the Document Components Ontology, provides a structured vocabulary written in OWL 2 DL of document components, both structural (e.g. block, inline, paragraph, section, chapter) and rhetorical (e.g. introduction, discussion, acknowledgements, reference list, figure, appendix), enabling these components, and documents composed of them, to be described in RDF. It imports the Discourse Elements Ontology (http://purl.org/spar/deo) and the Document Structural Patterns Ontology (http://www.essepuntato.it/2008/12/pattern), and uses seven rhetorical block elements abstracted from the SALT Rhetorical Ontology and the Ontology of Rhetorical Blocks (ORB)."@en ;
+  dc:rights "This work is distributed under a Creative Commons Attribution License (http://creativecommons.org/licenses/by/3.0/)."@en ;
+  dc:title "DoCO, the Document Components Ontology"@en ;
+  rdfs:comment """The Document Components Ontology (DoCO) in an ontology that provides a structured vocabulary written of document components, both structural (e.g., block, inline, paragraph, section, chapter) and rhetorical (e.g., introduction, discussion, acknowledgements, reference list, figure, appendix).
+
+**URL:** http://purl.org/spar/doco
+
+**Creators**: [David Shotton](http://orcid.org/0000-0001-5506-523X), [Silvio Peroni](http://orcid.org/0000-0003-0530-4305)
+
+**License:** [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/legalcode)
+
+**Website:** http://www.sparontologies.net/ontologies/doco
+
+**Cite as:** Constantin, A., Peroni, S., Pettifer, S., Shotton, D., Vitali, F. (2016). The Document Components Ontology (DoCO). In Semantic Web, 7 (2): 167-181. DOI: http://dx.doi.org/10.3233/SW-150177"""@en ;
+  rdfs:comment "This ontology is available at http://purl.org/spar/doco, and uses the namespace prefix doco."@en ;
+  owl:priorVersion <https://svn.code.sf.net/p/sempublishing/code/DoCO/2014-05-14_doco-1_2.owl> ;
+  owl:versionIRI <http://purl.org/spar/doco/2015-07-03> ;
+  owl:versionInfo "1.3" ;
+.
+doco:
+  rdf:type owl:Ontology ;
+  owl:imports <http://purl.org/spar/deo> ;
+  owl:imports <http://www.essepuntato.it/2008/12/pattern> ;
+.
+doco:Abstract
+  rdf:type owl:Class ;
+  rdfs:comment "A brief summary of a book, a research article, thesis, review, conference proceeding or any in-depth analysis of a particular subject or discipline, the purpose of which is to help the reader quickly ascertain the publication's purpose." ;
+  rdfs:label "abstract" ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          [
+            rdf:type owl:Class ;
+            owl:unionOf (
+                doco:Chapter
+                doco:Section
+              ) ;
+          ]
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty terms:isPartOf ;
+            owl:someValuesFrom [
+                rdf:type owl:Class ;
+                owl:unionOf (
+                    doco:BodyMatter
+                    doco:FrontMatter
+                  ) ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  owl:equivalentClass sro:Abstract ;
+.
+doco:Afterword
+  rdf:type owl:Class ;
+  rdfs:comment "A literary device that is often found at the end of a piece of literature. It generally covers the story of how the book came into being, or how the idea for the book was developed. Alternatively, it may be written by someone other than the author of the book, and may discuss the work's historical or cultural context, if the work is being reissued many years after its original publication."@en ;
+  rdfs:label "afterword"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          doco:Section
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty terms:isPartOf ;
+            owl:someValuesFrom doco:BackMatter ;
+          ]
+        ) ;
+    ] ;
+.
+doco:Appendix
+  rdf:type owl:Class ;
+  rdfs:comment "A supplemental addition to the main work. It may contain data, more detailed information about methods and materials, or provide additional detail concerning the information found in the main work."@en ;
+  rdfs:label "appendix"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          [
+            rdf:type owl:Class ;
+            owl:intersectionOf (
+                doco:Section
+                pattern:HeadedContainer
+              ) ;
+          ]
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty terms:isPartOf ;
+            owl:someValuesFrom doco:BackMatter ;
+          ]
+        ) ;
+    ] ;
+.
+doco:BackMatter
+  rdf:type owl:Class ;
+  rdfs:comment "The final principle part of a document, in which is usually found the bibliography, index, appendixes, etc."@en ;
+  rdfs:label "back matter"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          deo:DiscourseElement
+          pattern:Container
+        ) ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom [
+          rdf:type owl:Class ;
+          owl:complementOf [
+              rdf:type owl:Class ;
+              owl:unionOf (
+                  doco:BackMatter
+                  doco:BodyMatter
+                  doco:FrontMatter
+                ) ;
+            ] ;
+        ] ;
+      owl:onProperty pattern:isContainedBy ;
+    ] ;
+.
+doco:BibliographicReferenceList
+  rdf:type owl:Class ;
+  rdfs:comment "A list, usually within a bibliography, of all the references within the citing document that refer to  journal articles, books, book chapters, Web sites or similar publications."@en ;
+  rdfs:label "bibliographic reference list"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          doco:ListOfReferences
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty pattern:contains ;
+            owl:someValuesFrom deo:BibliographicReference ;
+          ]
+        ) ;
+    ] ;
+.
+doco:Bibliography
+  rdf:type owl:Class ;
+  rdfs:comment "A document section containing a list of bibliographic references."@en ;
+  rdfs:label "bibliography"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          [
+            rdf:type owl:Class ;
+            owl:unionOf (
+                doco:Chapter
+                doco:Section
+              ) ;
+          ]
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty terms:hasPart ;
+            owl:someValuesFrom deo:BibliographicReference ;
+          ]
+        ) ;
+    ] ;
+.
+doco:BlockQuotation
+  rdf:type owl:Class ;
+  rdfs:comment "A block quotation (also known as a long quotation or extract) is a quotation in a written document which is set off from the main text as a container for distinct paragraphs, which is typically distinguished visually using indentation, a different font, or smaller size. Block quotations are used for longer passages than run-in quotations (which are set off with quotation marks)."@en ;
+  rdfs:label "block quotation"@en ;
+  rdfs:subClassOf pattern:Container ;
+.
+doco:BodyMatter
+  rdf:type owl:Class ;
+  rdfs:comment "The central principle part of a document, that contains the real content. It may be subdivided hierarchically by the use of chapters and sections."@en ;
+  rdfs:label "body matter"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          deo:DiscourseElement
+          pattern:Container
+        ) ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom [
+          rdf:type owl:Class ;
+          owl:complementOf [
+              rdf:type owl:Class ;
+              owl:unionOf (
+                  doco:BackMatter
+                  doco:BodyMatter
+                  doco:FrontMatter
+                ) ;
+            ] ;
+        ] ;
+      owl:onProperty pattern:isContainedBy ;
+    ] ;
+.
+doco:CaptionedBox
+  rdf:type owl:Class ;
+  rdfs:comment "A rectangle space within a page that contains an object and its related caption."@en ;
+  rdfs:label "captioned box"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          [
+            rdf:type owl:Class ;
+            owl:intersectionOf (
+                deo:DiscourseElement
+                pattern:Container
+              ) ;
+          ]
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty terms:hasPart ;
+            owl:someValuesFrom deo:Caption ;
+          ]
+        ) ;
+    ] ;
+.
+doco:Chapter
+  rdf:type owl:Class ;
+  rdfs:comment "A principle division of the body matter of a large document, such as a book, a report or a legislative document."@en ;
+  rdfs:label "chapter"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          deo:DiscourseElement
+          pattern:HeadedContainer
+        ) ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty pattern:contains ;
+      owl:someValuesFrom [
+          rdf:type owl:Class ;
+          owl:complementOf doco:Chapter ;
+        ] ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty pattern:contains ;
+      owl:someValuesFrom [
+          rdf:type owl:Class ;
+          owl:unionOf (
+              doco:Paragraph
+              doco:Section
+            ) ;
+        ] ;
+    ] ;
+.
+doco:ChapterLabel
+  rdf:type owl:Class ;
+  rdfs:comment "A block containing a label for the chapter, that may include the chapter number."@en ;
+  rdfs:label "chapter label"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          doco:Label
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty terms:isPartOf ;
+            owl:someValuesFrom doco:Chapter ;
+          ]
+        ) ;
+    ] ;
+  owl:disjointWith doco:SectionLabel ;
+.
+doco:ChapterSubtitle
+  rdf:type owl:Class ;
+  rdfs:comment "The subtitle of a chapter."@en ;
+  rdfs:label "chapter subtitle"@en ;
+  rdfs:subClassOf doco:Subtitle ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty terms:isPartOf ;
+      owl:someValuesFrom doco:Chapter ;
+    ] ;
+  owl:disjointWith doco:SectionSubtitle ;
+.
+doco:ChapterTitle
+  rdf:type owl:Class ;
+  rdfs:comment "The title of a chapter."@en ;
+  rdfs:label "chapter title"@en ;
+  rdfs:subClassOf doco:Title ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty pattern:isContainedByAsHeader ;
+      owl:someValuesFrom doco:Chapter ;
+    ] ;
+  owl:disjointWith doco:SectionTitle ;
+.
+doco:Colophon
+  rdf:type owl:Class ;
+  rdfs:comment "A brief description of publication or production notes relevant to the document."@en ;
+  rdfs:label "colophon"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          doco:Section
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty terms:isPartOf ;
+            owl:someValuesFrom [
+                rdf:type owl:Class ;
+                owl:unionOf (
+                    doco:BackMatter
+                    doco:FrontMatter
+                  ) ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+.
+doco:ComplexRunInQuotation
+  rdf:type owl:Class ;
+  rdfs:comment "A quotation with a complex structure, that is included inline and is usually enclosed within quotation marks."@en ;
+  rdfs:label "complex run-in quotation"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+  rdfs:subClassOf pattern:Popup ;
+.
+doco:Figure
+  rdf:type owl:Class ;
+  rdfs:comment "A communication object comprising one or more graphics, drawings, images, or other visual representations.."@en ;
+  rdfs:label "figure"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:unionOf (
+          pattern:Meta
+          pattern:Milestone
+        ) ;
+    ] ;
+.
+doco:FigureBox
+  rdf:type owl:Class ;
+  rdfs:comment "A space within a document that contains a figure and its caption."@en ;
+  rdfs:label "figure box"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          doco:CaptionedBox
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty terms:hasPart ;
+            owl:someValuesFrom doco:Figure ;
+          ]
+        ) ;
+    ] ;
+  owl:disjointWith doco:TableBox ;
+.
+doco:FigureLabel
+  rdf:type owl:Class ;
+  rdfs:comment "A block containing a label for the figure box, that may include the figure number."@en ;
+  rdfs:label "figure label"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          doco:Label
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty terms:isPartOf ;
+            owl:someValuesFrom doco:FigureBox ;
+          ]
+        ) ;
+    ] ;
+.
+doco:Footnote
+  rdf:type owl:Class ;
+  rdfs:comment "A structure within a sentence that permits the author to make a comment or to cite another publication in support of the text, or both. A footnote is normally flagged by a superscript number immediately following that portion of the text to which it relates. For convenience of reading, the text of the footnote is usually printed at the bottom of the page or at the end of a text."@en ;
+  rdfs:label "footnote"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:unionOf (
+          pattern:Container
+          pattern:Popup
+        ) ;
+    ] ;
+.
+doco:Foreword
+  rdf:type owl:Class ;
+  rdfs:comment "A section in a book or report, usually written by someone other than the author, that introduces or commends the document to the reader. It may include description of the interaction between the writer of the foreword and the author."@en ;
+  rdfs:label "foreword"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          doco:Section
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty terms:isPartOf ;
+            owl:someValuesFrom doco:FrontMatter ;
+          ]
+        ) ;
+    ] ;
+.
+doco:Formula
+  rdf:type owl:Class ;
+  rdfs:comment "A unit of information expressed in mathematical, chemical or logical symbols and language."@en ;
+  rdfs:label "formula"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+  rdfs:subClassOf pattern:Popup ;
+.
+doco:FormulaBox
+  rdf:type owl:Class ;
+  rdfs:comment "A space within a document that contains one or more formulae."@en ;
+  rdfs:label "formula box"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          [
+            rdf:type owl:Class ;
+            owl:intersectionOf (
+                deo:DiscourseElement
+                pattern:Container
+              ) ;
+          ]
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty terms:hasPart ;
+            owl:someValuesFrom doco:Formula ;
+          ]
+        ) ;
+    ] ;
+.
+doco:FrontMatter
+  rdf:type owl:Class ;
+  rdfs:comment "The initial principle part of a document, usually containing self-referential metadata. In a book, this typically includes its title, authors, publisher, publication date, ISBN and copyright declaration, together with the preface, foreword, table of content, etc. In a journal article, the front matter is normally restricted to the title, authors and the authors' affiliation details, although the latter may alternatively be included in a footnote or the back matter. In books, the front matter pages may be numbered in lowercase Roman numerals."@en ;
+  rdfs:label "front matter"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          deo:DiscourseElement
+          pattern:Container
+        ) ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom [
+          rdf:type owl:Class ;
+          owl:complementOf [
+              rdf:type owl:Class ;
+              owl:unionOf (
+                  doco:BackMatter
+                  doco:BodyMatter
+                  doco:FrontMatter
+                ) ;
+            ] ;
+        ] ;
+      owl:onProperty pattern:isContainedBy ;
+    ] ;
+.
+doco:Glossary
+  rdf:type owl:Class ;
+  rdfs:comment "A set of definitions of words or phrases of importance to the work, normally alphabetized. In longer works of fiction, the entries may contains places and characters."@en ;
+  rdfs:label "glossary"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          doco:Section
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty terms:isPartOf ;
+            owl:someValuesFrom [
+                rdf:type owl:Class ;
+                owl:unionOf (
+                    doco:BackMatter
+                    doco:FrontMatter
+                  ) ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+.
+doco:Index
+  rdf:type owl:Class ;
+  rdfs:comment "A section containing a list of references to information on the named topic of importance to the content of the document. The references may be to page numbers, paragraph numbers, section numbers or chapter numbers within the document."@en ;
+  rdfs:label "index"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          [
+            rdf:type owl:Class ;
+            owl:intersectionOf (
+                doco:Section
+                pattern:HeadedContainer
+              ) ;
+          ]
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty terms:isPartOf ;
+            owl:someValuesFrom doco:BackMatter ;
+          ]
+        ) ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty terms:hasPart ;
+      owl:someValuesFrom [
+          rdf:type owl:Class ;
+          owl:intersectionOf (
+              doco:ListOfReferences
+              [
+                rdf:type owl:Restriction ;
+                owl:allValuesFrom [
+                    rdf:type owl:Restriction ;
+                    owl:onProperty terms:relation ;
+                    owl:someValuesFrom doco:TextChunk ;
+                  ] ;
+                owl:onProperty pattern:contains ;
+              ]
+            ) ;
+        ] ;
+    ] ;
+.
+doco:Label
+  rdf:type owl:Class ;
+  rdfs:comment "A block containing text, that may include a number (e.g., \"Chapter Three\", \"3.2\", \"Figure 1\", \"Table\"), used to identify an item within the document, for example a chapter, a figure, a section or a table."@en ;
+  rdfs:label "label"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty pattern:isContainedBy ;
+      owl:someValuesFrom [
+          rdf:type owl:Class ;
+          owl:unionOf (
+              pattern:Block
+              pattern:Container
+            ) ;
+        ] ;
+    ] ;
+.
+doco:Line
+  rdf:type owl:Class ;
+  rdfs:comment """A line in poetry is a unit of language into which a poem is divided which operates on principles which are distinct from and not necessarily coincident with grammatical structures, such as the sentence or clauses in sentences.
+
+A distinct numbered group of lines in verse is normally called a stanza."""@en ;
+  rdfs:label "line"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+  rdfs:subClassOf pattern:Block ;
+.
+doco:List
+  rdf:type owl:Class ;
+  rdfs:comment "An enumeration of items."@en ;
+  rdfs:label "list"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          pattern:Table
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty pattern:contains ;
+            owl:someValuesFrom pattern:Pattern ;
+          ]
+        ) ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom [
+          rdf:type owl:Class ;
+          owl:unionOf (
+              pattern:Block
+              pattern:Field
+              [
+                rdf:type owl:Class ;
+                owl:intersectionOf (
+                    pattern:Container
+                    [
+                      rdf:type owl:Class ;
+                      owl:complementOf [
+                          rdf:type owl:Class ;
+                          owl:unionOf (
+                              pattern:HeadedContainer
+                              pattern:Table
+                            ) ;
+                        ] ;
+                    ]
+                  ) ;
+              ]
+            ) ;
+        ] ;
+      owl:onProperty pattern:contains ;
+    ] ;
+.
+doco:ListOfAgents
+  rdf:type owl:Class ;
+  rdfs:comment "A list of items each denoting an agent, such as an author, a contributor or an organization, related to a particular publication."@en ;
+  rdfs:label "list of agents"@en ;
+  rdfs:subClassOf doco:List ;
+  owl:disjointWith doco:ListOfReferences ;
+.
+doco:ListOfAuthors
+  rdf:type owl:Class ;
+  rdfs:comment "A list of items each denoting an author of a particular publication."@en ;
+  rdfs:label "list of authors"@en ;
+  rdfs:subClassOf doco:ListOfAgents ;
+.
+doco:ListOfContributors
+  rdf:type owl:Class ;
+  rdfs:comment "A list of items, each denoting a contributor to a publication such as an encyclopedia or a text book, where such contributions are insufficient to warrant classification as author."@en ;
+  rdfs:label "list of contributors"@en ;
+  rdfs:subClassOf doco:ListOfAgents ;
+.
+doco:ListOfFigures
+  rdf:type owl:Class ;
+  rdfs:comment "A section of the document listing all the figures, identified by their titles and referenced to their locations in the document. May also be referred to as 'List of illustrations'."@en ;
+  rdfs:label "list of figures"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          [
+            rdf:type owl:Class ;
+            owl:intersectionOf (
+                doco:Section
+                pattern:HeadedContainer
+              ) ;
+          ]
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty terms:isPartOf ;
+            owl:someValuesFrom [
+                rdf:type owl:Class ;
+                owl:unionOf (
+                    doco:BackMatter
+                    doco:FrontMatter
+                  ) ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty terms:hasPart ;
+      owl:someValuesFrom [
+          rdf:type owl:Class ;
+          owl:intersectionOf (
+              doco:ListOfReferences
+              [
+                rdf:type owl:Restriction ;
+                owl:allValuesFrom [
+                    rdf:type owl:Restriction ;
+                    owl:onProperty terms:relation ;
+                    owl:someValuesFrom doco:FigureBox ;
+                  ] ;
+                owl:onProperty pattern:contains ;
+              ]
+            ) ;
+        ] ;
+    ] ;
+.
+doco:ListOfOrganizations
+  rdf:type owl:Class ;
+  rdfs:comment "A list of items, each denoting an organization or institution related to the publication, for example the authors' affiliations, or the suppliers of information, software, equipment or consumables used in the work described in the publication."@en ;
+  rdfs:label "list of organizations"@en ;
+  rdfs:subClassOf doco:ListOfAgents ;
+.
+doco:ListOfReferences
+  rdf:type owl:Class ;
+  rdfs:comment "A list of items each representing a reference to a specific part of the same document, or to another publication."@en ;
+  rdfs:label "list of references"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          doco:List
+          [
+            rdf:type owl:Restriction ;
+            owl:allValuesFrom deo:Reference ;
+            owl:onProperty pattern:contains ;
+          ]
+        ) ;
+    ] ;
+.
+doco:ListOfTables
+  rdf:type owl:Class ;
+  rdfs:comment "A section of the document listing all the tables, identified by their titles and referenced to their locations in the document."@en ;
+  rdfs:label "list of tables"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          [
+            rdf:type owl:Class ;
+            owl:intersectionOf (
+                doco:Section
+                pattern:HeadedContainer
+              ) ;
+          ]
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty terms:isPartOf ;
+            owl:someValuesFrom [
+                rdf:type owl:Class ;
+                owl:unionOf (
+                    doco:BackMatter
+                    doco:FrontMatter
+                  ) ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty terms:hasPart ;
+      owl:someValuesFrom [
+          rdf:type owl:Class ;
+          owl:intersectionOf (
+              doco:ListOfReferences
+              [
+                rdf:type owl:Restriction ;
+                owl:allValuesFrom [
+                    rdf:type owl:Restriction ;
+                    owl:onProperty terms:relation ;
+                    owl:someValuesFrom doco:TableBox ;
+                  ] ;
+                owl:onProperty pattern:contains ;
+              ]
+            ) ;
+        ] ;
+    ] ;
+.
+doco:Paragraph
+  rdf:type owl:Class ;
+  rdfs:comment "A self-contained unit of discourse that deals with a particular point or idea. Paragraphs contains one or more sentences. The start of a paragraph is indicated by beginning on a new line, which may be indented or separated by a small vertical space by the preceding paragraph. "@en ;
+  rdfs:label "paragraph"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          [
+            rdf:type owl:Class ;
+            owl:intersectionOf (
+                deo:DiscourseElement
+                pattern:Block
+              ) ;
+          ]
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty pattern:contains ;
+            owl:someValuesFrom doco:Sentence ;
+          ]
+        ) ;
+    ] ;
+.
+doco:Part
+  rdf:type owl:Class ;
+  rdfs:comment "A container of a semantic subdivision of a document. For example, chapters of a novel may be grouped into distinct parts that may be named 'Part 1', 'Part 2', etc., 'Book 1', 'Book 2', etc., or 'Genesis', 'Exodus', etc."@en ;
+  rdfs:label "part"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          deo:DiscourseElement
+          pattern:Container
+        ) ;
+    ] ;
+.
+doco:Preface
+  rdf:type owl:Class ;
+  rdfs:comment "A section describing how the document came into being, or how the idea for it was developed. The preface may contains acknowledgements. The preface to a later edition of the work often explains in what respect that edition differs from previous ones."@en ;
+  rdfs:label "preface"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          doco:Section
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty terms:isPartOf ;
+            owl:someValuesFrom doco:FrontMatter ;
+          ]
+        ) ;
+    ] ;
+.
+doco:Section
+  rdf:type owl:Class ;
+  rdfs:comment "A logical division of the text, usually numbered and/or titled, which may contain subsections."@en ;
+  rdfs:label "section"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          deo:DiscourseElement
+          pattern:HeadedContainer
+        ) ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty pattern:contains ;
+      owl:someValuesFrom [
+          rdf:type owl:Class ;
+          owl:complementOf doco:Chapter ;
+        ] ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty pattern:contains ;
+      owl:someValuesFrom [
+          rdf:type owl:Class ;
+          owl:unionOf (
+              doco:Paragraph
+              doco:Section
+            ) ;
+        ] ;
+    ] ;
+.
+doco:SectionLabel
+  rdf:type owl:Class ;
+  rdfs:comment "A block containing a label for the section, that may include the section number."@en ;
+  rdfs:label "section label"@en ;
+  rdfs:subClassOf doco:Label ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty terms:isPartOf ;
+      owl:someValuesFrom doco:Section ;
+    ] ;
+.
+doco:SectionSubtitle
+  rdf:type owl:Class ;
+  rdfs:comment "The subtitle of a section."@en ;
+  rdfs:label "section subtitle"@en ;
+  rdfs:subClassOf doco:Subtitle ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty terms:isPartOf ;
+      owl:someValuesFrom doco:Section ;
+    ] ;
+.
+doco:SectionTitle
+  rdf:type owl:Class ;
+  rdfs:comment "The title of a section."@en ;
+  rdfs:label "section title"@en ;
+  rdfs:subClassOf doco:Title ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty pattern:isContainedByAsHeader ;
+      owl:someValuesFrom doco:Section ;
+    ] ;
+.
+doco:Sentence
+  rdf:type owl:Class ;
+  rdfs:comment "An expression in natural language forming a single grammatical unit. A sentence minimally consists of a subject and an intransitive verb, or a subject, a transitive verb and an object, and may include additional dependent clauses. In written text, a sentence is always terminated by a full stop. A sentence can include words grouped meaningfully to express a statement, a question, an exclamation, a request or a command."@en ;
+  rdfs:label "sentence"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+  rdfs:subClassOf pattern:Inline ;
+.
+doco:SimpleRunInQuotation
+  rdf:type owl:Class ;
+  rdfs:comment "A textual quotation that is included inline and is usually enclosed within quotation marks."@en ;
+  rdfs:label "simple run-in quotation"@en ;
+  rdfs:subClassOf pattern:Inline ;
+.
+doco:Stanza
+  rdf:type owl:Class ;
+  rdfs:comment "A unit within a larger poem. A stanza consists of a grouping of lines, set off by a vertical space from other stanzas, that usually has a set pattern of meter and rhyme."@en ;
+  rdfs:label "stanza"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          [
+            rdf:type owl:Class ;
+            owl:intersectionOf (
+                deo:DiscourseElement
+                pattern:Container
+              ) ;
+          ]
+          [
+            rdf:type owl:Restriction ;
+            owl:allValuesFrom doco:Line ;
+            owl:onProperty pattern:contains ;
+          ]
+        ) ;
+    ] ;
+.
+doco:Subtitle
+  rdf:type owl:Class ;
+  rdfs:comment "An explanatory or alternative title of a publication. For example, Mary Shelley uses the alternative title 'The Modern Prometheus' to hint at the theme of her most famous novel 'Frankenstein'; Nick Efford uses the subtitle 'a practical introduction using Java' to qualify the title of his book 'Digital Image Processing'."@en ;
+  rdfs:label "subtitle"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+  rdfs:subClassOf pattern:Block ;
+.
+doco:Table
+  rdf:type owl:Class ;
+  rdfs:comment "A set of data arranged in cells within rows and columns."@en ;
+  rdfs:label "table"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+  rdfs:subClassOf pattern:Table ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty pattern:contains ;
+      owl:someValuesFrom pattern:Container ;
+    ] ;
+.
+doco:TableBox
+  rdf:type owl:Class ;
+  rdfs:comment "A space within a document that contains a table and its caption."@en ;
+  rdfs:label "table box"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          doco:CaptionedBox
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty terms:hasPart ;
+            owl:someValuesFrom doco:Table ;
+          ]
+        ) ;
+    ] ;
+.
+doco:TableLabel
+  rdf:type owl:Class ;
+  rdfs:comment "A block containing a label for the table box, that may include the table number."@en ;
+  rdfs:label "table label"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          doco:Label
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty terms:isPartOf ;
+            owl:someValuesFrom doco:TableBox ;
+          ]
+        ) ;
+    ] ;
+.
+doco:TableOfContents
+  rdf:type owl:Class ;
+  rdfs:comment "A section of the document listing all the chapters and sections, identified by their titles and referenced to their locations in the document. The table of contents may include a list of the front-matter and back-matter items, in addition to the body-matter items.  Where the document is a journal or magazine issue, the table of content lists the constituent items contained in that issue, typically by title, authors and first page number."@en ;
+  rdfs:label "table of contents"@en ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:intersectionOf (
+          doco:Section
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty terms:isPartOf ;
+            owl:someValuesFrom [
+                rdf:type owl:Class ;
+                owl:unionOf (
+                    doco:BackMatter
+                    doco:FrontMatter
+                  ) ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty terms:hasPart ;
+      owl:someValuesFrom [
+          rdf:type owl:Class ;
+          owl:intersectionOf (
+              doco:ListOfReferences
+              [
+                rdf:type owl:Restriction ;
+                owl:allValuesFrom [
+                    rdf:type owl:Restriction ;
+                    owl:onProperty terms:relation ;
+                    owl:someValuesFrom doco:Section ;
+                  ] ;
+                owl:onProperty pattern:contains ;
+              ]
+            ) ;
+        ] ;
+    ] ;
+.
+doco:TextBox
+  rdf:type owl:Class ;
+  rdfs:comment "A space within a document that contains textual content relating to, quoting from or expanding upon the main text. Usually a textbox is delimited by a border or use of a background colour distinct from that of the main text."@en ;
+  rdfs:label "text box"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+  rdfs:subClassOf pattern:Container ;
+.
+doco:TextChunk
+  rdf:type owl:Class ;
+  rdfs:comment "A piece of text defined by a start point and an end point."@en ;
+  rdfs:label "text chunk"@en ;
+  rdfs:subClassOf pattern:Inline ;
+.
+doco:Title
+  rdf:type owl:Class ;
+  rdfs:comment "A word, phrase or sentence that precedes and indicates the subject of a document or a document component - e.g., a book, a report, a news article, a chapter, a section or a table."@en ;
+  rdfs:label "title"@en ;
+  rdfs:subClassOf deo:DiscourseElement ;
+  rdfs:subClassOf [
+      rdf:type owl:Class ;
+      owl:unionOf (
+          pattern:Block
+          pattern:Field
+        ) ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty pattern:isContainedByAsHeader ;
+      owl:someValuesFrom pattern:HeadedContainer ;
+    ] ;
+.
+sro:Abstract
+  rdf:type owl:Class ;
+.
+pattern:Block
+  rdf:type owl:Class ;
+.
+pattern:Container
+  rdf:type owl:Class ;
+.
+pattern:Field
+  rdf:type owl:Class ;
+.
+pattern:HeadedContainer
+  rdf:type owl:Class ;
+.
+pattern:Inline
+  rdf:type owl:Class ;
+.
+pattern:Meta
+  rdf:type owl:Class ;
+.
+pattern:Milestone
+  rdf:type owl:Class ;
+.
+pattern:Pattern
+  rdf:type owl:Class ;
+.
+pattern:Popup
+  rdf:type owl:Class ;
+.
+pattern:Table
+  rdf:type owl:Class ;
+.
+pattern:contains
+  rdf:type owl:ObjectProperty ;
+  rdfs:subPropertyOf terms:hasPart ;
+.
+pattern:isContainedBy
+  rdf:type owl:ObjectProperty ;
+  rdfs:subPropertyOf terms:isPartOf ;
+.
+pattern:isContainedByAsHeader
+  rdf:type owl:ObjectProperty ;
+.
+rdfs:comment
+  rdf:type owl:AnnotationProperty ;
+.
+rdfs:label
+  rdf:type owl:AnnotationProperty ;
+.
+owl:topObjectProperty
+  rdf:type owl:ObjectProperty ;
+.
+[
+  rdf:type owl:AllDisjointClasses ;
+  owl:members (
+      doco:Abstract
+      doco:Afterword
+      doco:Appendix
+      doco:Colophon
+      doco:Foreword
+      doco:Glossary
+      doco:Index
+      doco:ListOfFigures
+      doco:ListOfTables
+      doco:Preface
+      doco:TableOfContents
+    ) ;
+].
+[
+  rdf:type owl:AllDisjointClasses ;
+  owl:members (
+      doco:BackMatter
+      doco:BodyMatter
+      doco:CaptionedBox
+      doco:Chapter
+      doco:ComplexRunInQuotation
+      doco:Footnote
+      doco:Formula
+      doco:FormulaBox
+      doco:FrontMatter
+      doco:List
+      doco:Part
+      doco:Section
+      doco:Table
+    ) ;
+].
+[
+  rdf:type owl:AllDisjointClasses ;
+  owl:members (
+      doco:Label
+      doco:Paragraph
+      doco:Subtitle
+      doco:Title
+    ) ;
+].
+[
+  rdf:type owl:AllDisjointClasses ;
+  owl:members (
+      doco:ListOfAuthors
+      doco:ListOfContributors
+      doco:ListOfOrganizations
+    ) ;
+].
+[
+  rdf:type owl:AllDisjointClasses ;
+  owl:members (
+      doco:Sentence
+      doco:SimpleRunInQuotation
+      doco:TextChunk
+    ) ;
+].

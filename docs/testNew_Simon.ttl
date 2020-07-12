@@ -1,0 +1,35 @@
+@prefix doco: <http://purl.org/spar/doco/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix deo: <http://purl.org/spar/deo/> .
+@prefix orb: <http://purl.org/orb/1.0/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pattern: <http://www.essepuntato.it/2008/12/pattern#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sro: <http://salt.semanticauthoring.org/ontologies/sro#> .
+@prefix terms: <http://purl.org/dc/terms/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dc:creator a owl:AnnotationProperty .
+
+dc:date a owl:AnnotationProperty .
+
+dc:description a owl:AnnotationProperty .
+
+dc:rights a owl:AnnotationProperty .
+
+dc:title a owl:AnnotationProperty .
+
+<http://purl.org/spar/doco> 
+rdf:type owl:Ontology ;
+owl:imports <http://purl.org/dc/elements/1.1/> ;
+  owl:imports <http://purl.org/dc/terms/> ;  
+  .  
+  
+  doco:BibliographicReferenceList a owl:Class ;
+    rdfs:label "bibliographic reference list"@en ;
+    rdfs:comment "A list, usually within a bibliography, of all the references within the citing document that refer to  journal articles, books, book chapters, Web sites or similar publications."@en ;
+    rdfs:subClassOf [ a owl:Class ;
+     #       owl:intersectionOf ( :ListOfReferences [ a owl:Restriction ;
+      #                 owl:someValuesFrom deo:BibliographicReference ] ) ] .
